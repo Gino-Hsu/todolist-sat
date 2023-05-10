@@ -1,4 +1,5 @@
 import Todos from '../components/TodosComponent/Todos';
+import AddTodo from '../components/TodosComponent/AddTodo/AddTodo';
 
 import style from './TodoPage.module.scss';
 
@@ -35,6 +36,9 @@ export default function TodoPage() {
       </section>
       <section className={style.todos}>
         <Todos todoItems={TODOITEMS} />
+      </section>
+      <section className={style.addTodo}>
+        <AddTodo />
       </section>
     </div>
   );
