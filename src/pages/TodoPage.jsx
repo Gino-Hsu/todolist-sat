@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react';
 import Todos from '../components/TodosComponent/Todos';
 import AddTodo from '../components/AddTodo/AddTodo';
-
-import { getTodos } from '../api/todos';
+import { useTodosContext } from '../context/TodosContext';
 
 import style from './TodoPage.module.scss';
 
 export default function TodoPage() {
-  const [todoItems, setTodoItems] = useState([]);
-
-  useEffect(() => {
-    // 取得所有 TODOS 資料，並更新 todoItems state
-    getTodos()
-      .then(res => {
-        setTodoItems(res);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
+  const { todoItems } = useTodosContext();
 
   return (
     <div className={style.container}>

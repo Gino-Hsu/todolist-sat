@@ -1,3 +1,4 @@
+import TodosContextProvider from './context/TodosContext';
 import TodoPage from './pages/TodoPage';
 
 import './App.scss';
@@ -5,7 +6,9 @@ import './App.scss';
 function App() {
   return (
     <div className='App'>
-      <TodoPage />
+      <TodosContextProvider>
+        <TodoPage />
+      </TodosContextProvider>
     </div>
   );
 }
