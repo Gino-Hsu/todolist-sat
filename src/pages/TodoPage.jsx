@@ -1,5 +1,5 @@
 import Todos from '../components/TodosComponent/Todos';
-import AddTodo from '../components/TodosComponent/AddTodo/AddTodo';
+import AddTodo from '../components/AddTodo/AddTodo';
 
 import style from './TodoPage.module.scss';
 

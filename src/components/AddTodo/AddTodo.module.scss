@@ -1,5 +1,5 @@
-@use '../../../styles/var' as color;
-@use '../../../styles/var' as mixin;
+@use '../../styles/var' as color;
+@use '../../styles/var' as mixin;
 
 .container {
   @include mixin.container-center;
