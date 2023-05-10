@@ -1,15 +1,18 @@
 @use '../styles/var' as color;
+@use '../styles/var' as mixin;
 
 .container {
   outline: 1px solid blue;
-  margin: 70px auto 0 auto;
+  position: relative;
+  top: 50px;
+  margin: 0 auto;
   width: 90%;
   max-width: 500px;
   height: 500px;
 }
 
 .todoHeader {
-  margin: 0 20px;
+  @include mixin.container-center;
   padding: 30px 0px 5px 0px;
   border-bottom: 2px solid color.$border-color;
 

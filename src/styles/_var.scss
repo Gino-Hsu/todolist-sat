@@ -1,9 +1,22 @@
-// body 背景色
+// color
+// back-ground color
 $main-bg-color: linear-gradient(#eff6fe, #d9dbfe);
+$bg-white: #fefffc;
+$bg-blue-1: #93acfb;
+$bg-blue-2: #7d8eca;
+$bg-blue-3: #cbd4f4;
 
 // 文字顏色
 $title: #98a9c8;
 $title-des: #ccd4e1;
+$init-color: #8e9ca9;
 
 // border 顏色
 $border-color: #c4ccdd;
+
+// mixin
+// container 置中-留邊
+@mixin container-center {
+  margin: 0 auto;
+  width: 90%;
+}

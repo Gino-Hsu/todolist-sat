@@ -1,0 +1,86 @@
+@use '../../styles/var' as color;
+@use '../../styles/var' as mixin;
+
+.progress {
+  @include mixin.container-center;
+  margin: 1em auto;
+  display: flex;
+  gap: 0.5rem;
+
+  span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: color.$init-color;
+  }
+
+  .progressBar {
+    flex: 1;
+    background-color: color.$bg-white;
+    border-radius: 10px;
+
+    .progressBarComplete {
+      height: 100%;
+      width: 50%;
+      background-color: color.$bg-blue-1;
+      border-radius: 10px;
+    }
+  }
+}
+
+.todoLists {
+  // outline: 1px solid red;
+  position: relative;
+  overflow-y: scroll;
+  height: 35vh;
+}
+
+.border {
+  @include mixin.container-center;
+  border-bottom: 2px solid color.$border-color;
+}
+
+.toggleContainer {
+  @include mixin.container-center;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 0.25rem;
+
+  span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: color.$init-color;
+  }
+
+  .toggleMoveDone {
+    position: relative;
+    width: 2.5em;
+    height: 1.25em;
+    background-color: color.$bg-white;
+    border-radius: 16px;
+    cursor: pointer;
+
+    .circle {
+      position: absolute;
+      top: 50%;
+      left: 0.25rem;
+      transform: translateY(-50%);
+      width: 1em;
+      height: 1em;
+      background-color: color.$bg-blue-3;
+      border-radius: 50%;
+    }
+
+    &__checked {
+      @extend .toggleMoveDone;
+      background-color: color.$bg-blue-3;
+
+      .circle {
+        left: unset;
+        right: 0.25rem;
+        background-color: color.$bg-white;
+      }
+    }
+  }
+}
