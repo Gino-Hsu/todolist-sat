@@ -7,6 +7,7 @@ import {
   getDocs,
   addDoc,
   updateDoc,
+  deleteDoc,
   doc,
   serverTimestamp,
 } from 'firebase/firestore';
@@ -24,7 +25,7 @@ export const getTodos = async () => {
 
     return data.docs.map(doc => ({ ...doc.data(), id: doc.id }));
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 
@@ -37,14 +38,27 @@ export const createTodo = async data => {
       createAt: serverTimestamp(), // todo 創建時間
     });
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 
 // 跟新單筆 todo 的 isDone
 export const updateIsDone = async ({ id, isDone }) => {
-  const todoDoc = doc(db, 'todos', id); // 依 id 取得單筆 todo
-  const newFields = { isDone: isDone }; // 建立新的 isDone
+  try {
+    const todoDoc = doc(db, 'todos', id); // 依 id 取得單筆 todo
+    const newFields = { isDone: isDone }; // 建立新的 isDone
+    await updateDoc(todoDoc, newFields);
+  } catch (error) {
+    throw error;
+  }
+};
 
-  await updateDoc(todoDoc, newFields);
+// 刪除單筆 todo
+export const deleteTodo = async ({ id }) => {
+  try {
+    const todoDoc = doc(db, 'todos', id); // 依 id 取得單筆 todo
+    await deleteDoc(todoDoc);
+  } catch (error) {
+    throw error;
+  }
 };

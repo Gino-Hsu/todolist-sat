@@ -18,21 +18,21 @@ export default function TodosContextProvider({ children }) {
       });
   }, []);
 
+  // 初始化 addTodoComplete 為 false
+  const handleInitComplete = () => {
+    setAddTodoComplete(false);
+  };
+
   // 新增 todo 後，取得最新資料，並一併 re-render 畫面
   const handleRerenderTodos = () => {
     getTodos()
       .then(res => {
-        setTodoItems(res);
+        setTodoItems(res); // 跟新 todo state
         setAddTodoComplete(true);
       })
       .catch(err => {
         console.error(err);
       });
-  };
-
-  // 初始化 addTodoComplete 為 false
-  const handleInitComplete = () => {
-    setAddTodoComplete(false);
   };
 
   // 跟新單筆 todo 的 isDone
@@ -48,7 +48,13 @@ export default function TodosContextProvider({ children }) {
         return todo;
       }
     });
-    setTodoItems(newTodos);
+    setTodoItems(newTodos); // 跟新 todo state
+  };
+
+  const handleTodoFilter = ({ id }) => {
+    // 篩選 todo id 不等於 id 的資料
+    const filterTodos = todoItems.filter(todo => todo.id !== id);
+    setTodoItems(filterTodos); // 跟新 todo state
   };
 
   return (
@@ -59,6 +65,7 @@ export default function TodosContextProvider({ children }) {
         addTodoComplete,
         handleInitComplete,
         handleTodoIsDone,
+        handleTodoFilter,
       }}
     >
       {children}
