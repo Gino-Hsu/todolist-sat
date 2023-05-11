@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Todo List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 此專案使用 React (create-react-app) 以及 Firebase-database 實作 Todo List 的 CRUD，並部屬至 Vercel。
 
-## Available Scripts
+網址：https://todolist-sat.vercel.app/
 
-In the project directory, you can run:
+![png](./public/readMe/App-image.png)
 
-### `npm start`
+## 規格說明
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 輸入 Todo：於輸入框內輸入文字，按下"+"按鈕後新增 Todo，練表中的 Todo 依加入時間排序(新的往下排);當新的 Todo 加入後滾動條滾至最下方；當新的 Todo 尚未加入完成時，"+"按鈕不可點擊。
+- 獲取所有 Todos：進入 APP 後獲取所有項目，並依時間排序(新的往下排)；單筆 Todo 內容過長時，超過的文字以"..."呈現，滑鼠移至項目上時，展開全部內容。
+- 完成 Todo：點擊列表中的勾選框，勾選框呈現"打勾"和文字標示"刪除線"。
+- 刪除 Todo：點擊"X"按鈕後，刪除該 Todo。
+- 滾動條：以側邊滾動條滾動瀏覽更多項目。
+- 進度條：已完成 Todo 的完成率，以整數位百分比呈現。
+- 切換紐：可點擊進行切換，當打開時，已完成的 Todo 排列至列表下方，未完成的 Todo 排列至列表上方；當關閉時，恢復依時間排序(新的往下排)。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 開發工具
 
-### `npm test`
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,firebase,scss,vercel" />
+  </a>
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React v.18.2.0
+- Firebase v.9.21.0
+- SaSS v.1.62.1
+- 部屬至 Vercel
 
-### `npm run build`
+## 使用專案
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h3>因本專案使用 Firebase 資料庫，故建議前往部屬網址使用專案。
+<a href="https://todolist-sat.vercel.app/">https://todolist-sat.vercel.app/</a>
+</h3>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 本地使用專案 (無資料庫服務)
 
-### `npm run eject`
+- clone 專案
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+git clone https://github.com/LoisChen68/careerforum.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- npm 安裝
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm i
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 啟動伺服器 (運行於：http://localhost:3000/)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm run start
+```
