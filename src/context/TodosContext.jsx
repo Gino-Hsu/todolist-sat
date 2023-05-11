@@ -35,6 +35,22 @@ export default function TodosContextProvider({ children }) {
     setAddTodoComplete(false);
   };
 
+  // 跟新單筆 todo 的 isDone
+  const handleTodoIsDone = ({ id, isDone }) => {
+    // 建立新的 todos arr
+    const newTodos = todoItems.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          isDone,
+        };
+      } else {
+        return todo;
+      }
+    });
+    setTodoItems(newTodos);
+  };
+
   return (
     <TodosContext.Provider
       value={{
@@ -42,6 +58,7 @@ export default function TodosContextProvider({ children }) {
         handleRerenderTodos,
         addTodoComplete,
         handleInitComplete,
+        handleTodoIsDone,
       }}
     >
       {children}

@@ -6,6 +6,8 @@ import {
   orderBy,
   getDocs,
   addDoc,
+  updateDoc,
+  doc,
   serverTimestamp,
 } from 'firebase/firestore';
 
@@ -26,9 +28,9 @@ export const getTodos = async () => {
   }
 };
 
+// 新增單筆 todo
 export const createTodo = async data => {
   try {
-    // 新增單筆 todo
     await addDoc(todosCollectionRef, {
       title: data.newTodo,
       isDone: false,
@@ -37,4 +39,12 @@ export const createTodo = async data => {
   } catch (error) {
     console.error(error);
   }
+};
+
+// 跟新單筆 todo 的 isDone
+export const updateIsDone = async ({ id, isDone }) => {
+  const todoDoc = doc(db, 'todos', id); // 依 id 取得單筆 todo
+  const newFields = { isDone: isDone }; // 建立新的 isDone
+
+  await updateDoc(todoDoc, newFields);
 };
