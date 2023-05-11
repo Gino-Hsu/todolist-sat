@@ -5,7 +5,7 @@ const TodosContext = createContext();
 
 export default function TodosContextProvider({ children }) {
   const [todoItems, setTodoItems] = useState([]);
-  const [addTodoComplete, setAddTodoComplete] = useState(false);
+  const [addTodoComplete, setAddTodoComplete] = useState('init');
 
   // 依創建時間進行排序 func
   const handleOnSort = data => {
@@ -30,9 +30,13 @@ export default function TodosContextProvider({ children }) {
       });
   }, []);
 
-  // 初始化 addTodoComplete 為 false
-  const handleInitComplete = () => {
-    setAddTodoComplete(false);
+  // 初始化 addTodoComplete 為 init
+  const handleCompleteStateInit = () => {
+    setAddTodoComplete('init');
+  };
+  // 初始化 addTodoComplete 為 pending
+  const handleCompleteStatePending = () => {
+    setAddTodoComplete('pending');
   };
 
   // 新增 todo 後，取得最新資料，並一併 re-render 畫面
@@ -40,7 +44,7 @@ export default function TodosContextProvider({ children }) {
     getTodos()
       .then(res => {
         setTodoItems(handleOnSort(res)); // 跟新 todo state
-        setAddTodoComplete(true);
+        setAddTodoComplete('done');
       })
       .catch(err => {
         console.error(err);
@@ -76,7 +80,8 @@ export default function TodosContextProvider({ children }) {
         todoItems,
         handleRerenderTodos,
         addTodoComplete,
-        handleInitComplete,
+        handleCompleteStateInit,
+        handleCompleteStatePending,
         handleTodoIsDone,
         handleTodoFilter,
       }}

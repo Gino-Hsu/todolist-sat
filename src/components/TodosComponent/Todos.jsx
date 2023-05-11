@@ -24,7 +24,7 @@ export default function Todos() {
   };
 
   useEffect(() => {
-    if (addTodoComplete === true) {
+    if (addTodoComplete === 'done') {
       // 當新增 TODO 完成後，滾動至最底部
       const newTodoElement = todoListRef.current.lastChild;
       newTodoElement.scrollIntoView({ behavior: 'smooth' });
