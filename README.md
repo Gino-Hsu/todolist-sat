@@ -42,7 +42,7 @@
 - clone 專案
 
 ```
-git clone https://github.com/LoisChen68/careerforum.git
+git clone https://github.com/Gino-Hsu/todolist-sat.git
 ```
 
 - npm 安裝
