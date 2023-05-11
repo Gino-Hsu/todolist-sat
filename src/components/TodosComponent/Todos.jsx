@@ -9,13 +9,16 @@ export default function Todos() {
   const { addTodoComplete, todoItems } = useTodosContext();
   const todoListRef = useRef();
 
-  // 取的 isDone 的 todo 陣列
-  const todoIsDoneArr = todoItems.filter(todo => todo.isDone);
+  // 取的 isDone 的 todos 陣列
+  const todoIsDoneArr = todoItems.filter(todo => !!todo.isDone);
+  // 取的 unDone 的 todos 陣列
+  const todoUnDoneArr = todoItems.filter(todo => !todo.isDone);
   // 完成項目的比率
   const progressRatio = todoIsDoneArr.length / todoItems.length;
   // 完成項目的百分比，取四捨五入整數位，當沒有項目時為 NaN，取百分比為 0
   const progressPercentage = Math.round(progressRatio * 100) || 0;
 
+  // MoveDown 切換紐 event handler
   const handleToggleMoveDown = () => {
     setIsMoveDown(!isMoveDown);
   };
@@ -40,11 +43,28 @@ export default function Todos() {
         </div>
       </div>
       <section className={style.todoLists} ref={todoListRef}>
-        {todoItems.map(todo => (
-          <Fragment key={todo.id}>
-            <TodoItem todo={todo} />
-          </Fragment>
-        ))}
+        {/* 若 isMoveDown 為 false，全部的 todos map 做渲染*/}
+        {!isMoveDown &&
+          todoItems.map(todo => (
+            <Fragment key={todo.id}>
+              <TodoItem todo={todo} />
+            </Fragment>
+          ))}
+        {/* 若 isMoveDown 為 true，isDone 和 unDone 分開 map 做渲染 */}
+        {!!isMoveDown && (
+          <>
+            {todoUnDoneArr.map(todo => (
+              <Fragment key={todo.id}>
+                <TodoItem todo={todo} />
+              </Fragment>
+            ))}
+            {todoIsDoneArr.map(todo => (
+              <Fragment key={todo.id}>
+                <TodoItem todo={todo} />
+              </Fragment>
+            ))}
+          </>
+        )}
       </section>
       <div className={style.border} />
       <div className={style.toggleContainer}>
