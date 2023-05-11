@@ -8,6 +8,7 @@
   gap: 0.5rem;
 
   span {
+    width: 40px;
     font-size: 1rem;
     font-weight: 400;
     color: color.$init-color;
@@ -20,9 +21,9 @@
 
     .progressBarComplete {
       height: 100%;
-      width: 50%;
       background-color: color.$bg-blue-1;
       border-radius: 10px;
+      transition: all 0.3s ease-in;
     }
   }
 }
@@ -67,6 +68,7 @@
     background-color: color.$bg-white;
     border-radius: 16px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 
     .circle {
       position: absolute;
@@ -77,6 +79,7 @@
       height: 1em;
       background-color: color.$bg-blue-3;
       border-radius: 50%;
+      transition: all 0.2s ease-in-out;
     }
 
     &__checked {
@@ -84,8 +87,8 @@
       background-color: color.$bg-blue-3;
 
       .circle {
-        left: unset;
-        right: 0.25rem;
+        left: calc(100% - 0.25rem);
+        transform: translate(-100%, -50%);
         background-color: color.$bg-white;
       }
     }
