@@ -8,6 +8,7 @@
   gap: 0.5rem;
 
   span {
+    width: 40px;
     font-size: 1rem;
     font-weight: 400;
     color: color.$init-color;
@@ -20,9 +21,9 @@
 
     .progressBarComplete {
       height: 100%;
-      width: 50%;
       background-color: color.$bg-blue-1;
       border-radius: 10px;
+      transition: all 0.3s ease-in;
     }
   }
 }
