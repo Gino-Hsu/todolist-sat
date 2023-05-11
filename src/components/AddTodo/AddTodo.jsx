@@ -7,11 +7,16 @@ import style from './AddTodo.module.scss';
 
 export default function AddTodo() {
   const [newTodo, setNewTodo] = useState('');
-  const { handleRerenderTodos, handleInitComplete } = useTodosContext();
+  const { handleRerenderTodos, handleCompleteStatePending, addTodoComplete } =
+    useTodosContext();
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = e => {
+    e.stopPropagation();
     // 當輸入為'空白'時，不進行提交
     if (newTodo.trim() === '') return;
+
+    // 點擊提送按鈕時跟新 addTodoComplete 為 'pending'
+    handleCompleteStatePending('pending');
 
     // firebase 創建新的 todo
     createTodo({ newTodo })
@@ -20,8 +25,6 @@ export default function AddTodo() {
         setNewTodo('');
         // 創建成功後，跟新 Todos & re-render
         handleRerenderTodos();
-        // 初始化新增 TODO 完成
-        handleInitComplete();
       })
       .catch(err => {
         console.error(err);
@@ -39,7 +42,10 @@ export default function AddTodo() {
           onChange={e => setNewTodo(e.target.value)}
           value={newTodo}
         />
-        <button onClick={handleOnSubmit}>
+        <button
+          onClick={e => handleOnSubmit(e)}
+          disabled={addTodoComplete === 'pending' ? true : false}
+        >
           <AiOutlinePlus />
         </button>
       </div>
